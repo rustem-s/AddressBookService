@@ -54,6 +54,7 @@
                             <artifactId>rest-service-domain</artifactId>
                         </jarModule>
                     </modules>
+                    <earSourceDirectory>${basedir}/src/main/resources</earSourceDirectory>
                 </configuration>
             </plugin>
         </plugins>

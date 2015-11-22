@@ -1,11 +1,15 @@
 package me.pio.addressbook.service.web;
 
 import me.pio.addressbook.service.domain.Common;
+import me.pio.addressbook.service.domain.Person;
+import me.pio.addressbook.service.ejb.AddressBookManagement;
 import me.pio.addressbook.service.ejb.Dag;
 
 import javax.ejb.EJB;
 import javax.servlet.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Created by Rustem.Saidaliyev on 22.11.2015.
@@ -15,6 +19,8 @@ public class DagServlet implements Servlet {
     @EJB(name = "DagEJB")
     private Dag ejb;
 
+    @EJB(name = "AddressBookManagementEJB")
+    private AddressBookManagement addressBookManagementEJB;
 
     public void init(ServletConfig servletConfig) throws ServletException {
 
@@ -25,7 +31,14 @@ public class DagServlet implements Servlet {
     }
 
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        ServletOutputStream out = servletResponse.getOutputStream();
+        PrintWriter out = servletResponse.getWriter();
+
+        List<Person> personList = addressBookManagementEJB.getPersonList();
+
+        for(Person person: personList) {
+            out.println(person.getLastName());
+        }
+
         out.println("<html><body>");
         out.println("<p>Servlet says hey.</p>");
         Common common = new Common();
