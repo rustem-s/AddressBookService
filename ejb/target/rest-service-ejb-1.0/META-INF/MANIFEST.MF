@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: Rustem.Saidaliyev
+Class-Path: rest-service-domain-1.0.jar
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_65
+
