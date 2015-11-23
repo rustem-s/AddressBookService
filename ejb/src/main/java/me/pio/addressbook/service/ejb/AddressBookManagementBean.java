@@ -1,5 +1,6 @@
 package me.pio.addressbook.service.ejb;
 
+import me.pio.addressbook.service.domain.AddressBookServiceException;
 import me.pio.addressbook.service.domain.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,7 +30,7 @@ public class AddressBookManagementBean implements AddressBookManagement {
     }
 
     @Override
-    public Person create(Person person) {
+    public Person createPerson(Person person) {
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
@@ -46,5 +47,38 @@ public class AddressBookManagementBean implements AddressBookManagement {
         return person;
     }
 
+    @Override
+    public Person findPersonById(Long id) throws AddressBookServiceException {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        Person person = (Person) session.get(Person.class, id);
+
+        if (person == null)
+            throw new AddressBookServiceException(String.format("Person by id %s not found", id));
+
+        session.close();
+
+        return person;
+    }
+
+    @Override
+    public void deletePersonById(Long id) throws AddressBookServiceException {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        session.beginTransaction();
+
+        Person person = (Person) session.get(Person.class, id);
+
+        if (person == null)
+            throw new AddressBookServiceException(String.format("Person by id %s not found", id));
+
+        session.delete(person);
+
+        session.getTransaction().commit();
+
+        session.close();
+    }
 
 }

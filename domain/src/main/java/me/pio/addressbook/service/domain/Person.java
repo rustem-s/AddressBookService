@@ -1,5 +1,7 @@
 package me.pio.addressbook.service.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -8,12 +10,15 @@ import java.sql.Date;
  */
 @Entity
 public class Person {
+    @JsonIgnore
     private Long id;
     private String firstName;
     private String lastName;
     private String phone;
     private String email;
     private Date birthDate;
+    private Address address;
+    private Company company;
 
     @Id
     @Column(name = "id")
@@ -74,6 +79,26 @@ public class Person {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_address")
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "id_company")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
 }

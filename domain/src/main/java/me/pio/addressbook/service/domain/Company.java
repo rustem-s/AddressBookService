@@ -1,5 +1,7 @@
 package me.pio.addressbook.service.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -7,16 +9,18 @@ import javax.persistence.*;
  */
 @Entity
 public class Company {
-    private int id;
+    @JsonIgnore
+    private Long id;
     private String name;
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,10 +47,4 @@ public class Company {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
 }

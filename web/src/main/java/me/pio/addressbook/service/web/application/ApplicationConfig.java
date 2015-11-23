@@ -2,7 +2,7 @@ package me.pio.addressbook.service.web.application;
 
 
 import me.pio.addressbook.service.web.provider.JacksonJsonProvider;
-import me.pio.addressbook.service.web.resource.PersonResource;
+import me.pio.addressbook.service.web.resource.PersonService;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -17,7 +17,7 @@ public class ApplicationConfig extends Application {
         Set<Class<?>> s = new HashSet<Class<?>>();
 
         s.add(JacksonJsonProvider.class);
-        s.add(PersonResource.class);
+        s.add(PersonService.class);
 
         return s;
     }
