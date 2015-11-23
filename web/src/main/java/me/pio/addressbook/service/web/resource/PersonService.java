@@ -53,4 +53,12 @@ public class PersonService {
         addressBookManagementEJB.deletePersonById(id);
 
     }
+
+    @Path("/update")
+    @POST
+    public void update(Person person) throws AddressBookServiceException {
+
+        addressBookManagementEJB.updatePerson(person);
+
+    }
 }

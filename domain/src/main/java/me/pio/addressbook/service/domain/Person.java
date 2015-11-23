@@ -1,7 +1,5 @@
 package me.pio.addressbook.service.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -10,7 +8,7 @@ import java.sql.Date;
  */
 @Entity
 public class Person {
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private String firstName;
     private String lastName;

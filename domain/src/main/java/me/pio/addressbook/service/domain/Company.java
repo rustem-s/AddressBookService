@@ -1,7 +1,5 @@
 package me.pio.addressbook.service.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 /**
@@ -9,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 public class Company {
-    @JsonIgnore
+//    @JsonIgnore
     private Long id;
     private String name;
 

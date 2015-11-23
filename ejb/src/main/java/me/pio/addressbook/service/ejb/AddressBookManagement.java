@@ -17,4 +17,6 @@ public interface AddressBookManagement {
     public Person findPersonById(Long id) throws AddressBookServiceException;
 
     public void deletePersonById(Long id) throws AddressBookServiceException;
+
+    public void updatePerson(Person person) throws AddressBookServiceException;
 }

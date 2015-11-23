@@ -5,14 +5,4 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
            version="3.0">
 
-    <servlet>
-        <servlet-name>DagServlet</servlet-name>
-        <servlet-class>me.pio.addressbook.service.web.DagServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DagServlet</servlet-name>
-        <url-pattern>/servlet</url-pattern>
-    </servlet-mapping>
-
 </web-app>
