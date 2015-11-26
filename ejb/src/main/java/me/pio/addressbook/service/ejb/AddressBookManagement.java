@@ -18,5 +18,5 @@ public interface AddressBookManagement {
 
     public void deletePersonById(Long id) throws AddressBookServiceException;
 
-    public void updatePerson(Person person) throws AddressBookServiceException;
+    public Person updatePerson(Long id, Person person) throws AddressBookServiceException;
 }

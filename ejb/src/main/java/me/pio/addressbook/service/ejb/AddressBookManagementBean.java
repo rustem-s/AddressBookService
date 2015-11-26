@@ -82,22 +82,26 @@ public class AddressBookManagementBean implements AddressBookManagement {
     }
 
     @Override
-    public void updatePerson(Person person) throws AddressBookServiceException {
+    public Person updatePerson(Long id, Person person) throws AddressBookServiceException {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
 
         session.beginTransaction();
 
-        Person targetPerson = (Person) session.get(Person.class, person.getId());
+        Person targetPerson = (Person) session.get(Person.class, id);
 
         if (targetPerson == null)
             throw new AddressBookServiceException(String.format("Person by id %s not found", person.getId()));
+
+        person.setId(id);
 
         session.merge(person);
 
         session.getTransaction().commit();
 
         session.close();
+
+        return person;
     }
 
 }

@@ -7,8 +7,9 @@ import java.sql.Date;
  * Created by Rustem.Saidaliyev on 22.11.2015.
  */
 @Entity
+@Table(name = "person")
 public class Person {
-//    @JsonIgnore
+
     private Long id;
     private String firstName;
     private String lastName;

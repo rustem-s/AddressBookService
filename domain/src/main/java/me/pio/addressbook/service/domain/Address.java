@@ -6,12 +6,12 @@ import javax.persistence.*;
  * Created by Rustem.Saidaliyev on 22.11.2015.
  */
 @Entity
+@Table(name = "address")
 public class Address {
-//    @JsonIgnore
+
     private Long id;
     private String address;
     private String city;
-    private String phone;
 
     @Id
     @Column(name = "id")
@@ -43,15 +43,4 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
-
-    @Basic
-    @Column(name = "phone")
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
 }

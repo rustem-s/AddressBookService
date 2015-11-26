@@ -29,7 +29,7 @@ public class PersonService {
     }
 
     @Path("/create")
-    @PUT
+    @POST
     public Person create(Person person) throws Exception{
 
         person = addressBookManagementEJB.createPerson(person);
@@ -54,11 +54,13 @@ public class PersonService {
 
     }
 
-    @Path("/update")
+    @Path("/update/{id}")
     @POST
-    public void update(Person person) throws AddressBookServiceException {
+    public Person update(@PathParam("id") long id, Person person) throws AddressBookServiceException {
 
-        addressBookManagementEJB.updatePerson(person);
+        Person modifiedPerson = addressBookManagementEJB.updatePerson(id, person);
+
+        return modifiedPerson;
 
     }
 }
